@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
 import './App.css';
+import CreateUser from './components/CreateUser'
+import EditUser from './components/EditUser'
+import ListUser from './components/ListUser';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h5>React CRUD operations using PHP API and MySQL</h5>
+      
+      <Router>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">List Users</Link>
+            </li>
+            <li>
+              <Link to="user/create">Create User</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route index element={<ListUser />} />
+          <Route path="/user/create" element={<CreateUser />} />
+          <Route path="/user/:id/edit" element={<EditUser />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
