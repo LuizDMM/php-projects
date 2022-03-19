@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 export default function CreateUser() {
   const [inputs, setInputs] = useState({})
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-
+    axios.post('http://localhost:8000/api/user/save', inputs)
     console.log(inputs)
   }
 
